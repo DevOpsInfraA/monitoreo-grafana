@@ -4,7 +4,7 @@ RESULTADO=$(curl http://ipservidor:puerto/api/v1.1/consulta/estado) # configurar
 echo $RESULTADO
 
 if [[ $RESULTADO == *"Abierto"* ]]; then
-  echo 'check_bcra{target="http://ipservidor:puerto/api/v1.1/consulta/estado"} 1' > /ruta/a/monitoreo-grafana/textfile-collector/check_bcra.prom
+  echo 'check_bcra{target="http://ipservidor:puerto/api/v1.1/consulta/estado"} 1' > /home/vsupport/monitoreo-grafana/textfile-collector/check_bcra.prom
 else
-  echo 'check_bcra{target="http://ipservidor:puerto/api/v1.1/consulta/estado"} 0' > /ruta/a/monitoreo-grafana/textfile-collector/check_bcra.prom
+  echo 'check_bcra{target="http://ipservidor:puerto/api/v1.1/consulta/estado"} 0' > /home/vsupport/monitoreo-grafana/textfile-collector/check_bcra.prom
 fi

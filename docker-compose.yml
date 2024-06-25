@@ -17,7 +17,7 @@ services:
     ports:
     - "9100:9100"
     volumes:
-      - /opt/accusys/monitoreo-grafana/textfile-collector:/textfile_collector #Aqui configurar siempre el path real en su ambiente
+      - ./textfile-collector:/textfile_collector #Aqui configurar siempre el path real en su ambiente
       - /:/host:ro
     command:
       - '--collector.textfile.directory=/textfile_collector'
@@ -32,22 +32,6 @@ services:
     volumes:
     - grafana-storage:/var/lib/grafana
     - ./grafana.ini:/etc/grafana/grafana.ini
-
-  advisor:
-    image: gcr.io/cadvisor/cadvisor:v0.49.1
-    container_name: "cadvisor"
-    restart: unless-stopped
-    ports:
-    - "8080:8080"
-    volumes:
-     - /etc/localtime:/etc/localtime:ro
-     - /etc/timezone:/etc/timezone:ro
-     - /:/rootfs:ro
-     - /var/run:/var/run:rw
-     - /sys:/sys:ro
-     - /var/lib/docker:/var/lib/docker:ro
-    devices:
-    - /dev/kmsg:/dev/kmsg
 
 volumes:
   grafana-storage:
